@@ -89,13 +89,19 @@ function cleanUpEnv {
 # Redirect stdout to a file but still print stderr.
 mkdir -p `dirname $STDOUT`
 {
+  echo "prepDirectories"
   prepDirectories
 
+  echo "pythonSetup"
   pythonSetup
+  echo "doConfigure"
   doConfigure
+  echo "doMake"
   doMake
 
+  echo "cleanUpDirectories"
   cleanUpDirectories
+  echo "cleanUpEnv"
   cleanUpEnv
 } 2>&1 > $STDOUT
 
